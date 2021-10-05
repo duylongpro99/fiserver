@@ -1,0 +1,19 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 902,
+  "username": "postgres",
+  "password": "postgres",
+  "database": "fashionInform",
+  "entities": [
+    "**/*.entity{.ts,.js}"
+  ],
+  "migrationsTableName": "migration",
+  "migrations": [
+    "src/migration/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/migration"
+  },
+  "ssl": false
+}
