@@ -26,6 +26,6 @@ RUN npm install --only=production
 
 COPY . .
 
-COPY --from=development /usr/src/app/dist ./dist
+COPY --from=development /fiserver/dist ./dist
 
 CMD ["node", "dist/main"]

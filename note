@@ -1,0 +1,1 @@
+run dockser-compose up --build -V to when add a new package for app
