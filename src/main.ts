@@ -13,9 +13,10 @@ async function bootstrap() {
       new DocumentBuilder().setTitle('API').setDescription('MY APP API').build()
     );
 
-    SwaggerModule.setup('docs', app, document);
+    SwaggerModule.setup('swagger', app, document);
   }
   console.log('server is listening on port 2019')
+  app.enableCors();
   await app.listen(2019);
 }
 bootstrap();
