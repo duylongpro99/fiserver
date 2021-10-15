@@ -1,1 +1,7 @@
 run dockser-compose up --build -V to when add a new package for app
+
+
+
+run migrate database  
+===> npm run typeorm:migration:generate -- [migration name]
+===> npm run typeorm:migration:run

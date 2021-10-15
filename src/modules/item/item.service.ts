@@ -1,5 +1,5 @@
 import { RedisCacheService } from './../redis-cache/redis-cache.service';
-import { User } from './../../entity/user/user.entity';
+import { User } from './../../modules/users/entities/user.entity';
 import { ItemDto } from './../../entity/item/item.dto';
 import { Item } from '../../entity/item/item.entity';
 import { Injectable } from '@nestjs/common';

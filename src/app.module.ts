@@ -1,3 +1,5 @@
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
 import { ItemModule } from './modules/item/item.module';
 import { Module, CacheModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,11 +13,13 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     TypeOrmModule.forRoot(configService.getTypeOrmConfig()),
     RedisCacheModule,
-    ItemModule,
     CacheModule.register(),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    ItemModule,
+    UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
