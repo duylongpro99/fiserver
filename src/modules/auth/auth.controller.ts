@@ -7,11 +7,15 @@ import { User } from 'src/modules/users/entities/user.entity';
 import {
   Body,
   Controller,
+  Get,
   Post,
+  Req,
   UnprocessableEntityException,
+  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginRequest } from './request/loginRequest';
+import { JwtAuthGuard } from './jwt/jwt-auth.guard';
 
 export interface AuthenticationPayload {
   user: User;
@@ -97,6 +101,17 @@ export class AuthController {
     return {
       status: 'success',
       data: payload,
+    };
+  }
+
+  @Get('/me')
+  @UseGuards(JwtAuthGuard)
+  async getUser(@Req() request) {
+    const userId = request.user.id;
+    const user = await this.userService.findById(userId);
+    return {
+      status: 'success',
+      data: user,
     };
   }
   // @Get()

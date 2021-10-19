@@ -7,6 +7,7 @@ import { UsersModule } from './../users/users.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtAuthGuard } from './jwt/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -24,6 +25,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     TypeOrmModule.forFeature([RefreshTokens]),
   ],
   controllers: [AuthController],
-  providers: [AuthService, TokensService],
+  providers: [AuthService, TokensService, JwtAuthGuard],
 })
 export class AuthModule {}
