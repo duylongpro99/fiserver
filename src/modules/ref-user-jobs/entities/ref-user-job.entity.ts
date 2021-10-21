@@ -1,7 +1,10 @@
-import { Column } from 'typeorm';
+import { User } from '../../users/entities/user.entity';
+import { Job } from '../../jobs/entities/job.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity('refUserJob')
 export class RefUserJob {
-  @Column({ type: 'uuid' })
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ type: 'uuid' })
@@ -15,4 +18,10 @@ export class RefUserJob {
 
   @Column({ type: 'boolean' })
   isDeleted: boolean;
+
+  @ManyToOne(() => Job, (job) => job.refUserJobs)
+  job: Job;
+
+  @ManyToOne(() => User, (user) => user.refUserJobs)
+  user: User;
 }

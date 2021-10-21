@@ -1,5 +1,6 @@
+import { RefUserJob } from './../../ref-user-jobs/entities/ref-user-job.entity';
 import { RefreshTokens } from './../../../entity/refreshToken/refresh-token.entity';
-import { BeforeInsert, Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { BeforeInsert, Column, Entity, OneToMany, OneToOne } from 'typeorm';
 import { BaseEntity } from '../../../entity/base.entity';
 import * as bcrypt from 'bcryptjs';
 
@@ -22,6 +23,9 @@ export class User extends BaseEntity {
 
   @OneToOne(() => RefreshTokens, (rToken) => rToken.userId)
   refreshToken: RefreshTokens;
+
+  @OneToMany(() => RefUserJob, (refUserJob) => refUserJob.job)
+  refUserJobs: RefUserJob[];
 
   @BeforeInsert()
   async hashPassword() {
